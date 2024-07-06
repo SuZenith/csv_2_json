@@ -13,7 +13,28 @@ pub struct Opts {
 #[derive(Debug, Parser)]
 pub enum SubCommand {
     #[command(name = "csv", about = "Convert CSV to JSON")]
-    Csv(CsvOpts)
+    Csv(CsvOpts),
+
+    #[command(name = "password", about = "Generate a random password")]
+    Password(PasswordOpts),
+}
+
+#[derive(Debug, Parser)]
+pub struct PasswordOpts {
+    #[arg(short, long, default_value_t = 16)]
+    pub length: usize,
+
+    #[arg(long, default_value_t = true)]
+    pub uppercase: bool,
+
+    #[arg(long, default_value_t = true)]
+    pub lowercase: bool,
+
+    #[arg(long, default_value_t = true)]
+    pub number: bool,
+
+    #[arg(long, default_value_t = true)]
+    pub symbol: bool,
 }
 
 #[derive(Debug, Clone, Copy)]
