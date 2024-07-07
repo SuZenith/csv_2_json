@@ -1,7 +1,7 @@
 use std::fmt;
-use std::path::Path;
 use std::str::FromStr;
 use clap::Parser;
+use super::verify_input_file;
 
 #[derive(Debug, Parser)]
 pub struct CsvOpts {
@@ -54,14 +54,6 @@ impl From<OutputFormat> for &'static str {
             OutputFormat::Yaml => "yaml",
             OutputFormat::Toml => "toml",
         }
-    }
-}
-
-fn verify_input_file(filename: &str) -> Result<String, String> {
-    if Path::new(filename).exists() {
-        Ok(filename.into())
-    } else {
-        Err(format!("File not found: {}", filename))
     }
 }
 
