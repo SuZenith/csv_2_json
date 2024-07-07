@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::fs;
 use csv::Reader;
-use crate::opts::OutputFormat;
+use crate::cli::OutputFormat;
 
 pub fn process_csv(input: &str, output: String, format: OutputFormat) {
     let mut reader = Reader::from_path(input).unwrap();
